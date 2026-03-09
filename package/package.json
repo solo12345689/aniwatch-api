@@ -1,0 +1,79 @@
+{
+    "name": "@genga-movie/aniwatch",
+    "version": "1.0.0",
+    "description": "A Node.js library providing high-level APIs to scrape anime information from multiple sources — inspired by @consumet/extensions.",
+    "type": "module",
+    "main": "./dist/cjs/index.js",
+    "module": "./dist/esm/index.js",
+    "types": "./dist/types/index.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/esm/index.js",
+            "require": "./dist/cjs/index.js",
+            "types": "./dist/types/index.d.ts"
+        },
+        "./hianime": {
+            "import": "./dist/esm/providers/hianime/index.js",
+            "require": "./dist/cjs/providers/hianime/index.js",
+            "types": "./dist/types/providers/hianime/index.d.ts"
+        }
+    },
+    "files": [
+        "dist",
+        "README.md",
+        "LICENSE"
+    ],
+    "scripts": {
+        "build": "npm run build:esm && npm run build:cjs && npm run build:types",
+        "build:esm": "tsc -p tsconfig.esm.json",
+        "build:cjs": "tsc -p tsconfig.cjs.json",
+        "build:types": "tsc -p tsconfig.types.json",
+        "dev": "tsc -p tsconfig.esm.json --watch",
+        "test": "vitest run --config vitest.config.ts",
+        "test:watch": "vitest --config vitest.config.ts",
+        "typecheck": "tsc --noEmit -p tsconfig.esm.json",
+        "prepublishOnly": "npm run build",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "example": "tsx examples/basic.ts"
+    },
+    "keywords": [
+        "anime",
+        "manga",
+        "scraper",
+        "hianime",
+        "hianimez",
+        "consumet",
+        "extensions",
+        "streaming",
+        "api"
+    ],
+    "author": "solo12345689",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/solo12345689/aniwatch-api.git",
+        "directory": "package"
+    },
+    "bugs": {
+        "url": "https://github.com/solo12345689/aniwatch-api/issues"
+    },
+    "homepage": "https://github.com/solo12345689/aniwatch-api/tree/main/package#readme",
+    "dependencies": {
+        "axios": "^1.7.9",
+        "cheerio": "^1.0.0"
+    },
+    "devDependencies": {
+        "@types/node": "^22.0.0",
+        "prettier": "^3.5.3",
+        "tsx": "^4.19.4",
+        "typescript": "^5.8.3",
+        "vitest": "^3.1.4"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}
