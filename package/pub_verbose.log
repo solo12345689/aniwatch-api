@@ -1,0 +1,604 @@
+﻿node.exe : npm 
+verbose cli C:\User
+s\akshi\scoop\apps\
+nodejs\current\node
+.exe C:\Users\akshi
+\scoop\apps\nodejs\
+current\node_module
+s\npm\bin\npm-cli.j
+s
+At line:1 char:1
++ & "C:\Users\akshi
+\scoop\apps\nodejs\
+current/node.exe" 
+"C:\Users\akshi ...
++ ~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
+    + CategoryInfo 
+             : No  
+  tSpecified: (n   
+ pm verbose cli    
+...\bin\npm-cl    
+i.js:String) [    
+], RemoteExcep    
+tion
+    + FullyQualifi 
+   edErrorId : Na  
+  tiveCommandErr   
+ or
+ 
+npm info using 
+npm@11.11.0
+npm info using 
+node@v25.8.1
+npm verbose title 
+npm publish
+npm verbose argv 
+"publish" 
+"--access" 
+"public" 
+"--loglevel" 
+"verbose"
+npm verbose 
+logfile 
+logs-max:10 dir:C:\
+Users\akshi\scoop\p
+ersist\nodejs\cache
+\_logs\2026-03-14T1
+4_20_02_479Z-
+npm verbose 
+logfile C:\Users\ak
+shi\scoop\persist\n
+odejs\cache\_logs\2
+026-03-14T14_20_02_
+479Z-debug-0.log
+npm verbose 
+publish [ '.' ]
+
+> @genga-movie/aniwatch@1.0.1 prepublishOnly
+> npm run build
+
+npm verbose cli C:\
+Users\akshi\scoop\a
+pps\nodejs\current\
+node.exe C:\Users\a
+kshi\scoop\apps\nod
+ejs\current\node_mo
+dules\npm\bin\npm-c
+li.js
+npm info using 
+npm@11.11.0
+npm info using 
+node@v25.8.1
+npm verbose title 
+npm run build
+npm verbose argv 
+"run" "build"
+npm verbose 
+logfile 
+logs-max:10 dir:C:\
+Users\akshi\scoop\p
+ersist\nodejs\cache
+\_logs\2026-03-14T1
+4_20_03_734Z-
+npm verbose 
+logfile C:\Users\ak
+shi\scoop\persist\n
+odejs\cache\_logs\2
+026-03-14T14_20_03_
+734Z-debug-0.log
+
+> @genga-movie/aniwatch@1.0.1 build
+> npm run build:esm && npm run build:cjs && npm run build:types
+
+npm verbose cli C:\
+Users\akshi\scoop\a
+pps\nodejs\current\
+node.exe C:\Users\a
+kshi\scoop\apps\nod
+ejs\current\node_mo
+dules\npm\bin\npm-c
+li.js
+npm info using 
+npm@11.11.0
+npm info using 
+node@v25.8.1
+npm verbose title 
+npm run build:esm
+npm verbose argv 
+"run" "build:esm"
+npm verbose 
+logfile 
+logs-max:10 dir:C:\
+Users\akshi\scoop\p
+ersist\nodejs\cache
+\_logs\2026-03-14T1
+4_20_04_443Z-
+npm verbose 
+logfile C:\Users\ak
+shi\scoop\persist\n
+odejs\cache\_logs\2
+026-03-14T14_20_04_
+443Z-debug-0.log
+
+> @genga-movie/aniwatch@1.0.1 build:esm
+> tsc -p tsconfig.esm.json
+
+npm verbose cwd D:\
+aniwatch-api\packag
+e
+npm verbose os 
+Windows_NT 
+10.0.26100
+npm verbose node 
+v25.8.1
+npm verbose npm  
+v11.11.0
+npm verbose exit 0
+npm info ok
+npm verbose cli C:\
+Users\akshi\scoop\a
+pps\nodejs\current\
+node.exe C:\Users\a
+kshi\scoop\apps\nod
+ejs\current\node_mo
+dules\npm\bin\npm-c
+li.js
+npm info using 
+npm@11.11.0
+npm info using 
+node@v25.8.1
+npm verbose title 
+npm run build:cjs
+npm verbose argv 
+"run" "build:cjs"
+npm verbose 
+logfile 
+logs-max:10 dir:C:\
+Users\akshi\scoop\p
+ersist\nodejs\cache
+\_logs\2026-03-14T1
+4_20_07_887Z-
+npm verbose 
+logfile C:\Users\ak
+shi\scoop\persist\n
+odejs\cache\_logs\2
+026-03-14T14_20_07_
+887Z-debug-0.log
+
+> @genga-movie/aniwatch@1.0.1 build:cjs
+> tsc -p tsconfig.cjs.json
+
+npm verbose cwd D:\
+aniwatch-api\packag
+e
+npm verbose os 
+Windows_NT 
+10.0.26100
+npm verbose node 
+v25.8.1
+npm verbose npm  
+v11.11.0
+npm verbose exit 0
+npm info ok
+npm verbose cli C:\
+Users\akshi\scoop\a
+pps\nodejs\current\
+node.exe C:\Users\a
+kshi\scoop\apps\nod
+ejs\current\node_mo
+dules\npm\bin\npm-c
+li.js
+npm info using 
+npm@11.11.0
+npm info using 
+node@v25.8.1
+npm verbose title 
+npm run build:types
+npm verbose argv 
+"run" "build:types"
+npm verbose 
+logfile 
+logs-max:10 dir:C:\
+Users\akshi\scoop\p
+ersist\nodejs\cache
+\_logs\2026-03-14T1
+4_20_11_997Z-
+npm verbose 
+logfile C:\Users\ak
+shi\scoop\persist\n
+odejs\cache\_logs\2
+026-03-14T14_20_11_
+997Z-debug-0.log
+
+> @genga-movie/aniwatch@1.0.1 build:types
+> tsc -p tsconfig.types.json
+
+npm verbose cwd D:\
+aniwatch-api\packag
+e
+npm verbose os 
+Windows_NT 
+10.0.26100
+npm verbose node 
+v25.8.1
+npm verbose npm  
+v11.11.0
+npm verbose exit 0
+npm info ok
+npm verbose cwd D:\
+aniwatch-api\packag
+e
+npm verbose os 
+Windows_NT 
+10.0.26100
+npm verbose node 
+v25.8.1
+npm verbose npm  
+v11.11.0
+npm verbose exit 0
+npm info ok
+npm notice
+npm notice ≡ƒôª  @g
+enga-movie/aniwatch
+@1.0.1
+npm notice Tarball 
+Contents
+npm notice 1.1kB 
+LICENSE
+npm notice 10.6kB 
+README.md
+npm notice 605B dis
+t/cjs/base/BaseProv
+ider.js
+npm notice 381B dis
+t/cjs/base/BaseProv
+ider.js.map
+npm notice 1.1kB di
+st/cjs/base/Extensi
+onsError.js
+npm notice 728B dis
+t/cjs/base/Extensio
+nsError.js.map
+npm notice 2.1kB di
+st/cjs/base/HttpCli
+ent.js
+npm notice 1.3kB di
+st/cjs/base/HttpCli
+ent.js.map
+npm notice 950B dis
+t/cjs/base/index.js
+npm notice 166B dis
+t/cjs/base/index.js
+.map
+npm notice 2.9kB 
+dist/cjs/index.js
+npm notice 571B dis
+t/cjs/index.js.map
+npm notice 42.5kB d
+ist/cjs/providers/h
+ianime/HiAnime.js
+npm notice 31.6kB d
+ist/cjs/providers/h
+ianime/HiAnime.js.m
+ap
+npm notice 838B dis
+t/cjs/providers/hia
+nime/index.js
+npm notice 156B dis
+t/cjs/providers/hia
+nime/index.js.map
+npm notice 844B dis
+t/cjs/providers/ind
+ex.js
+npm notice 145B dis
+t/cjs/providers/ind
+ex.js.map
+npm notice 168B dis
+t/cjs/types/base.js
+npm notice 123B dis
+t/cjs/types/base.js
+.map
+npm notice 188B dis
+t/cjs/types/hianime
+.js
+npm notice 129B dis
+t/cjs/types/hianime
+.js.map
+npm notice 883B dis
+t/cjs/types/index.j
+s
+npm notice 154B dis
+t/cjs/types/index.j
+s.map
+npm notice 467B dis
+t/esm/base/BaseProv
+ider.js
+npm notice 370B dis
+t/esm/base/BaseProv
+ider.js.map
+npm notice 953B dis
+t/esm/base/Extensio
+nsError.js
+npm notice 710B dis
+t/esm/base/Extensio
+nsError.js.map
+npm notice 1.7kB di
+st/esm/base/HttpCli
+ent.js
+npm notice 1.3kB di
+st/esm/base/HttpCli
+ent.js.map
+npm notice 139B dis
+t/esm/base/index.js
+npm notice 180B dis
+t/esm/base/index.js
+.map
+npm notice 2.2kB 
+dist/esm/index.js
+npm notice 679B dis
+t/esm/index.js.map
+npm notice 41.5kB d
+ist/esm/providers/h
+ianime/HiAnime.js
+npm notice 31.6kB d
+ist/esm/providers/h
+ianime/HiAnime.js.m
+ap
+npm notice 63B dist
+/esm/providers/hian
+ime/index.js
+npm notice 148B dis
+t/esm/providers/hia
+nime/index.js.map
+npm notice 69B dist
+/esm/providers/inde
+x.js
+npm notice 139B dis
+t/esm/providers/ind
+ex.js.map
+npm notice 102B dis
+t/esm/types/base.js
+npm notice 122B dis
+t/esm/types/base.js
+.map
+npm notice 122B dis
+t/esm/types/hianime
+.js
+npm notice 128B dis
+t/esm/types/hianime
+.js.map
+npm notice 90B dist
+/esm/types/index.js
+npm notice 154B dis
+t/esm/types/index.j
+s.map
+npm notice 880B dis
+t/types/base/BasePr
+ovider.d.ts
+npm notice 528B dis
+t/types/base/BasePr
+ovider.d.ts.map
+npm notice 718B dis
+t/types/base/Extens
+ionsError.d.ts
+npm notice 424B dis
+t/types/base/Extens
+ionsError.d.ts.map
+npm notice 793B dis
+t/types/base/HttpCl
+ient.d.ts
+npm notice 797B dis
+t/types/base/HttpCl
+ient.d.ts.map
+npm notice 141B dis
+t/types/base/index.
+d.ts
+npm notice 182B dis
+t/types/base/index.
+d.ts.map
+npm notice 2.8kB di
+st/types/index.d.ts
+npm notice 1.3kB di
+st/types/index.d.ts
+.map
+npm notice 7.3kB di
+st/types/providers/
+hianime/HiAnime.d.t
+s
+npm notice 2.0kB di
+st/types/providers/
+hianime/HiAnime.d.t
+s.map
+npm notice 65B dist
+/types/providers/hi
+anime/index.d.ts
+npm notice 150B dis
+t/types/providers/h
+ianime/index.d.ts.m
+ap
+npm notice 71B dist
+/types/providers/in
+dex.d.ts
+npm notice 141B dis
+t/types/providers/i
+ndex.d.ts.map
+npm notice 947B dis
+t/types/types/base.
+d.ts
+npm notice 1.2kB di
+st/types/types/base
+.d.ts.map
+npm notice 6.5kB di
+st/types/types/hian
+ime.d.ts
+npm notice 7.0kB di
+st/types/types/hian
+ime.d.ts.map
+npm notice 92B dist
+/types/types/index.
+d.ts
+npm notice 156B dis
+t/types/types/index
+.d.ts.map
+npm notice 2.5kB 
+package.json
+npm notice Tarball 
+Details
+npm notice name: @g
+enga-movie/aniwatch
+npm notice 
+version: 1.0.1
+npm notice 
+filename: genga-mov
+ie-aniwatch-1.0.1.t
+gz
+npm notice package 
+size: 36.3 kB
+npm notice 
+unpacked size: 
+220.0 kB
+npm notice shasum: 
+339208046304a24d566
+2233502b2baa07ed309
+af
+npm notice 
+integrity: sha512-z
+eb6w21piTCN9[...]wL
+PA4ZaexovCg==
+npm notice total 
+files: 69
+npm notice
+npm http fetch GET 
+200 https://registr
+y.npmjs.org/@genga-
+movie%2faniwatch 
+2283ms (cache 
+revalidated)
+npm notice 
+Publishing to https
+://registry.npmjs.o
+rg/ with tag 
+latest and public 
+access
+npm http fetch PUT 
+404 https://registr
+y.npmjs.org/@genga-
+movie%2faniwatch 
+447ms
+npm verbose stack 
+HttpErrorGeneral: 
+404 Not Found - 
+PUT https://registr
+y.npmjs.org/@genga-
+movie%2faniwatch - 
+Not found
+npm verbose stack  
+   at C:\Users\aksh
+i\scoop\apps\nodejs
+\25.8.1\node_module
+s\npm\node_modules\
+npm-registry-fetch\
+lib\check-response.
+js:103:15
+npm verbose stack  
+   at process.proce
+ssTicksAndRejection
+s (node:internal/pr
+ocess/task_queues:1
+04:5)
+npm verbose stack  
+   at async 
+publish (C:\Users\a
+kshi\scoop\apps\nod
+ejs\25.8.1\node_mod
+ules\npm\node_modul
+es\libnpmpublish\li
+b\publish.js:53:15)
+npm verbose stack  
+   at async 
+otplease (C:\Users\
+akshi\scoop\apps\no
+dejs\25.8.1\node_mo
+dules\npm\lib\utils
+\auth.js:8:12)
+npm verbose stack  
+   at async 
+#publish (C:\Users\
+akshi\scoop\apps\no
+dejs\25.8.1\node_mo
+dules\npm\lib\comma
+nds\publish.js:188:
+7)
+npm verbose stack  
+   at async 
+Publish.exec (C:\Us
+ers\akshi\scoop\app
+s\nodejs\25.8.1\nod
+e_modules\npm\lib\c
+ommands\publish.js:
+47:5)
+npm verbose stack  
+   at async 
+Npm.exec (C:\Users\
+akshi\scoop\apps\no
+dejs\25.8.1\node_mo
+dules\npm\lib\npm.j
+s:209:9)
+npm verbose stack  
+   at async 
+module.exports (C:\
+Users\akshi\scoop\a
+pps\nodejs\25.8.1\n
+ode_modules\npm\lib
+\cli\entry.js:67:5)
+npm verbose 
+statusCode 404
+npm verbose pkgid @
+genga-movie/aniwatc
+h@1.0.1
+npm error code E404
+npm error 404 Not 
+Found - PUT https:/
+/registry.npmjs.org
+/@genga-movie%2fani
+watch - Not found
+npm error 404
+npm error 404  The 
+requested resource 
+'@genga-movie/aniwa
+tch@1.0.1' could 
+not be found or 
+you do not have 
+permission to 
+access it.
+npm error 404
+npm error 404 Note 
+that you can also 
+install from a
+npm error 404 
+tarball, folder, 
+http url, or git 
+url.
+npm verbose cwd D:\
+aniwatch-api\packag
+e
+npm verbose os 
+Windows_NT 
+10.0.26100
+npm verbose node 
+v25.8.1
+npm verbose npm  
+v11.11.0
+npm verbose exit 1
+npm verbose code 1
+npm error A 
+complete log of 
+this run can be 
+found in: C:\Users\
+akshi\scoop\persist
+\nodejs\cache\_logs
+\2026-03-14T14_20_0
+2_479Z-debug-0.log

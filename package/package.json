@@ -1,6 +1,6 @@
 {
     "name": "@genga-movie/aniwatch",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A Node.js library providing high-level APIs to scrape anime information from multiple sources — inspired by @consumet/extensions.",
     "type": "module",
     "main": "./dist/cjs/index.js",
@@ -64,7 +64,7 @@
         "cheerio": "^1.0.0"
     },
     "devDependencies": {
-        "@types/node": "^22.0.0",
+        "@types/node": "^22.19.15",
         "prettier": "^3.5.3",
         "tsx": "^4.19.4",
         "typescript": "^5.8.3",

@@ -6,6 +6,7 @@ RUN mkdir /home/app
 WORKDIR /home/app
 
 COPY package.json .
+COPY package ./package
 
 RUN npm install --ignore-scripts
 
@@ -37,6 +38,7 @@ WORKDIR /app
 
 # copy config file for better use of layers
 COPY --chown=zoro:aniwatch package.json .
+COPY --chown=zoro:aniwatch package ./package
 
 # install dependencies
 RUN npm install --omit=dev --ignore-scripts
@@ -55,6 +57,6 @@ ENV PORT=4000
 # exposed port
 EXPOSE 4000
 
-CMD [ "node", "dist/src/server.js" ]
+CMD [ "node", "dist/server.js" ]
 
 # exit

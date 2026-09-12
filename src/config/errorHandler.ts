@@ -9,11 +9,21 @@ const errResp: { status: ContentfulStatusCode; message: string } = {
 };
 
 export const errorHandler: ErrorHandler = (err, c) => {
-    log.error(JSON.stringify(err));
+    log.error(
+        {
+            message: err.message,
+            stack: err.stack,
+            ...(err instanceof HiAnimeError ? { status: err.status, provider: (err as any).provider } : {}),
+        },
+        "Unhandled error occurred"
+    );
 
-    if (err instanceof HiAnimeError) {
-        errResp.status = err.status as ContentfulStatusCode;
+    if (err instanceof HiAnimeError || (err && typeof (err as any).status === "number")) {
+        errResp.status = (err as any).status as ContentfulStatusCode;
         errResp.message = err.message;
+    } else {
+        errResp.status = 500;
+        errResp.message = "Internal Server Error";
     }
 
     return c.json(errResp, errResp.status);

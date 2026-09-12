@@ -1,14 +1,14 @@
 {
   "name": "aniwatch-api",
   "version": "2.18.2",
-  "description": "NodeJS API for obtaining anime data from hianimez.to",
+  "description": "NodeJS API for obtaining anime data from aniwatchtv.to",
   "main": "dist/server.js",
   "type": "module",
   "scripts": {
     "start": "node dist/server.js",
     "dev": "tsx watch src/server.ts",
-    "build": "tsc",
-    "buildnstart": "tsc && node dist/server.js",
+    "build": "cd package && npm install && npm run build && cd .. && tsc",
+    "buildnstart": "npm run build && node dist/server.js",
     "vercel-build": "echo hello",
     "prepare": "node .husky/install.mjs",
     "test": "vitest run --config vitest.config.ts",
@@ -32,23 +32,23 @@
     "zoro.to",
     "aniwatch.to",
     "hianime.to",
-    "hianimez.to"
+    "aniwatchtv.to"
   ],
   "author": "https://github.com/ghoshRitesh12",
   "license": "MIT",
   "dependencies": {
     "@hono/node-server": "^1.14.2",
-    "aniwatch": "^2.24.3",
+    "aniwatch": "file:./package",
     "dotenv": "^16.5.0",
     "envalid": "^8.0.0",
     "hono": "^4.7.10",
     "hono-rate-limiter": "^0.4.2",
     "ioredis": "^5.6.1",
     "pino": "^9.7.0",
-    "pino-pretty": "^13.0.0",
-    "@types/node": "^22.19.3"
+    "pino-pretty": "^13.0.0"
   },
   "devDependencies": {
+    "@types/node": "^22.20.2",
     "husky": "^9.1.7",
     "prettier": "^3.5.3",
     "tsx": "^4.19.4",

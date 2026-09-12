@@ -2,7 +2,7 @@ import { describe, it, expect, beforeAll } from "vitest";
 import { ANIME, HiAnime, ExtensionsError } from "../src/index.js";
 
 describe("HiAnime Provider", () => {
-    let hianime: HiAnime;
+    let hianime: InstanceType<typeof ANIME.HiAnime>;
 
     beforeAll(() => {
         hianime = new ANIME.HiAnime();
@@ -17,7 +17,7 @@ describe("HiAnime Provider", () => {
         const info = hianime.getMetadata();
         expect(info.id).toBe("hianime");
         expect(info.name).toBeDefined();
-        expect(info.baseUrl).toBe("https://hianimez.to");
+        expect(info.baseUrl).toBe("https://hianime.at");
         expect(info.version).toBeDefined();
         expect(info.isWorking).toBe(true);
     });

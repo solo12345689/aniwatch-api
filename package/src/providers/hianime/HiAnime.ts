@@ -31,8 +31,16 @@ import type {
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
-const BASE_URL = "https://hianimez.to";
+const BASE_URL = "https://hianime.at";
 const AJAX_URL = `${BASE_URL}/ajax`;
+ 
+export const Servers = {
+    VidStreaming: "vidstreaming",
+    MegaCloud: "megacloud",
+    StreamSB: "streamsb",
+    StreamTape: "streamtape",
+    Alt: "hd-1",
+} as const;
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -84,7 +92,7 @@ function parseAnimeCard(
 // ── Provider ─────────────────────────────────────────────────────────────────
 
 /**
- * HiAnime (hianimez.to) scraper.
+ * HiAnime (hianime.al) scraper.
  *
  * Scrapes anime data directly from the website HTML and JSON endpoints.
  *
@@ -106,7 +114,7 @@ function parseAnimeCard(
  */
 export class HiAnime extends BaseProvider {
     readonly id = "hianime" as const;
-    readonly name = "HiAnime (hianimez.to)" as const;
+    readonly name = "HiAnime (hianime.at)" as const;
     readonly baseUrl = BASE_URL;
     readonly version = "1.0.0" as const;
     readonly isWorking = true;
@@ -121,6 +129,10 @@ export class HiAnime extends BaseProvider {
             headers: {
                 Referer: BASE_URL,
                 Origin: BASE_URL,
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+                "Accept-Language": "en-US,en;q=0.9",
+                "Cache-Control": "max-age=0",
             },
         });
     }
@@ -186,20 +198,28 @@ export class HiAnime extends BaseProvider {
 
             // Anime sections
             const sections: Record<string, AnimeCard[]> = {};
-            const sectionMap: Record<string, string> = {
-                "#latest-ep-anime .film_list-wrap .flw-item": "latestEpisodeAnimes",
-                "#top-upcoming .film_list-wrap .flw-item": "topUpcomingAnimes",
-                "#top-airing .film_list-wrap .flw-item": "topAiringAnimes",
-                "#most-popular .film_list-wrap .flw-item": "mostPopularAnimes",
-                "#most-favourite .film_list-wrap .flw-item": "mostFavoriteAnimes",
-                "#latest-completed .film_list-wrap .flw-item": "latestCompletedAnimes",
-            };
+            const sectionConfig: Array<{key: string, heading: string}> = [
+                { key: "latestEpisodeAnimes", heading: "Latest Episode" },
+                { key: "topUpcomingAnimes", heading: "Top Upcoming" },
+                { key: "topAiringAnimes", heading: "Top Airing" },
+                { key: "mostPopularAnimes", heading: "Most Popular" },
+                { key: "mostFavoriteAnimes", heading: "Most Favorite" },
+                { key: "latestCompletedAnimes", heading: "Latest Completed" },
+            ];
 
-            for (const [selector, key] of Object.entries(sectionMap)) {
+            for (const { key, heading } of sectionConfig) {
                 sections[key] = [];
-                $(selector).each((_: any, el: any) => {
-                    sections[key].push(parseAnimeCard($, el));
-                });
+                // Search for heading, then find the container
+                const $heading = $(`.block_area-header h2:contains("${heading}"), .cat-heading:contains("${heading}"), .anif-block-header:contains("${heading}")`).first();
+                if ($heading.length) {
+                    const $block = $heading.closest(".block_area, .anif-block");
+                    $block.find(".flw-item, li, .item").each((_: any, el: any) => {
+                        // Avoid duplicates if multiple selectors match or nested items
+                        if (($(el).find(".film-name").length || $(el).hasClass("flw-item") || $(el).find(".film-poster").length) && !($(el).parents(".flw-item, li, .item").length)) {
+                            sections[key].push(parseAnimeCard($, el));
+                        }
+                    });
+                }
             }
 
             // Top 10
@@ -970,20 +990,19 @@ export class HiAnime extends BaseProvider {
                 html: string;
                 totalItems: number;
                 status: boolean;
-            }>(`${AJAX_URL}/v2/episode/list/${numericId}`);
+            }>(`/api/theme/episode/list/${numericId}`);
 
             const $ = load(data.html ?? "");
             const episodes: AnimeEpisodes["episodes"] = [];
 
-            $(".detail-ep-list .ep-item, .ss-list .ep-item").each((_: any, el: any) => {
+            $(".detail-ep-list .ep-item, .ss-list .ep-item, .ssc-list .ep-item, a.ep-item, .ssl-item").each((_: any, el: any) => {
                 const $el = $(el);
+                const epIdStr = $el.attr("data-id") || $el.attr("href")?.split("?ep=")[1] || "";
                 episodes.push({
-                    number: parseInt($el.attr("data-number") ?? "0"),
-                    title: $el.attr("title") ?? $el.find(".ssli-detail .ep-name").text().trim(),
-                    episodeId:
-                        $el.attr("data-id") ??
-                        extractId($el.find("a").attr("href")),
-                    isFiller: $el.hasClass("ssl-item-filler") || $el.attr("data-filler") === "1",
+                    title: $el.attr("title") || $el.text().trim() || "",
+                    episodeId: `${animeId}?ep=${epIdStr}`,
+                    number: parseInt($el.attr("data-number") || $el.attr("data-id") || "0"),
+                    isFiller: $el.hasClass("ssl-item-filler") || $el.hasClass("filler"),
                 });
             });
 
@@ -1055,7 +1074,7 @@ export class HiAnime extends BaseProvider {
     // ── Episode Servers ────────────────────────────────────────────────────────
 
     /**
-     * Get available streaming servers for an episode.
+     * Get available server names and IDs for an episode.
      *
      * @param episodeId - Episode ID string (e.g. "steinsgate-0-92?ep=2055")
      *
@@ -1073,39 +1092,42 @@ export class HiAnime extends BaseProvider {
                 server_name?: string;
                 episode_no?: number;
                 status: boolean;
-            }>(`${AJAX_URL}/v2/episode/servers?episodeId=${epId}`);
+            }>(`/api/theme/episode/servers?episodeId=${epId}`);
 
             const $ = load(data.html ?? "");
             const sub: EpisodeServers["sub"] = [];
             const dub: EpisodeServers["dub"] = [];
             const raw: EpisodeServers["raw"] = [];
 
-            $(".server-item[data-type='sub'] .server-name, .ps-server-list[data-type='sub'] li").each(
-                (_, el) => {
+            $(".server-item[data-type='sub'], .servers-sub .server-item").each(
+                (_: number, el: any) => {
                     const $el = $(el);
+                    const hash = $el.attr("data-hash") || "";
                     sub.push({
-                        serverId: parseInt($el.attr("data-server-id") || $el.attr("data-id") || "0"),
-                        serverName: ($el.text().trim() || $el.attr("data-server-name")) ?? "",
+                        serverId: parseInt($el.attr("data-server-id") || $el.attr("data-id") || (hash ? "1" : "0")),
+                        serverName: ($el.attr("data-server-name") || $el.text().trim()) ?? "",
                     });
                 }
             );
 
-            $(".server-item[data-type='dub'] .server-name, .ps-server-list[data-type='dub'] li").each(
-                (_, el) => {
+            $(".server-item[data-type='dub'], .servers-dub .server-item").each(
+                (_: number, el: any) => {
                     const $el = $(el);
+                    const hash = $el.attr("data-hash") || "";
                     dub.push({
-                        serverId: parseInt($el.attr("data-server-id") || $el.attr("data-id") || "0"),
-                        serverName: ($el.text().trim() || $el.attr("data-server-name")) ?? "",
+                        serverId: parseInt($el.attr("data-server-id") || $el.attr("data-id") || (hash ? "1" : "0")),
+                        serverName: ($el.attr("data-server-name") || $el.text().trim()) ?? "",
                     });
                 }
             );
 
-            $(".server-item[data-type='raw'] .server-name, .ps-server-list[data-type='raw'] li").each(
-                (_, el) => {
+            $(".server-item[data-type='raw'], .servers-raw .server-item").each(
+                (_: number, el: any) => {
                     const $el = $(el);
+                    const hash = $el.attr("data-hash") || "";
                     raw.push({
-                        serverId: parseInt($el.attr("data-server-id") || $el.attr("data-id") || "0"),
-                        serverName: ($el.text().trim() || $el.attr("data-server-name")) ?? "",
+                        serverId: parseInt($el.attr("data-server-id") || $el.attr("data-id") || (hash ? "1" : "0")),
+                        serverName: ($el.attr("data-server-name") || $el.text().trim()) ?? "",
                     });
                 }
             );
@@ -1154,17 +1176,45 @@ export class HiAnime extends BaseProvider {
         try {
             const epId = episodeId.split("?ep=")[1] ?? episodeId;
 
-            // Step 1: Get server embed URL
-            const { data: serverData } = await this.http.get<{
-                link: string;
-                server: number;
-                type: string;
+            // Fetch server items html from theme endpoint
+            const { data: serverRes } = await this.http.get<{
+                html: string;
                 status: boolean;
-            }>(
-                `${AJAX_URL}/v2/episode/sources?id=${epId}&server=${server}&category=${category}`
-            );
+            }>(`/api/theme/episode/servers?episodeId=${epId}`);
 
-            if (!serverData?.link) {
+            const $ = load(serverRes.html ?? "");
+            let streamUrl = "";
+
+            $(`.server-item[data-type='${category}']`).each((_: number, el: any) => {
+                const $el = $(el);
+                const sName = ($el.attr("data-server-name") || $el.text().trim()).toLowerCase();
+                const targetServer = (server as string).toLowerCase();
+
+                if (sName.includes(targetServer) || targetServer.includes(sName)) {
+                    const hash = $el.attr("data-hash");
+                    if (hash) {
+                        try {
+                            streamUrl = Buffer.from(hash, "base64").toString("utf-8");
+                        } catch {
+                            // ignore invalid base64
+                        }
+                    }
+                }
+            });
+
+            // Fallback: pick first hash if server name match not exact
+            if (!streamUrl) {
+                const firstHash = $(`.server-item[data-type='${category}']`).first().attr("data-hash");
+                if (firstHash) {
+                    try {
+                        streamUrl = Buffer.from(firstHash, "base64").toString("utf-8");
+                    } catch {
+                        // ignore
+                    }
+                }
+            }
+
+            if (!streamUrl) {
                 throwExtensionsError(
                     `No streaming source found for episode ${episodeId} on server ${server}`,
                     404,
@@ -1172,18 +1222,16 @@ export class HiAnime extends BaseProvider {
                 );
             }
 
-            // Step 2: Resolve streaming URL from embed link
-            // (Actual decryption varies by server; we return the embed link info here)
             return {
                 headers: {
                     Referer: BASE_URL,
                     "User-Agent":
-                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
                 },
                 sources: [
                     {
-                        url: serverData.link,
-                        isM3U8: serverData.link.includes(".m3u8"),
+                        url: streamUrl,
+                        isM3U8: streamUrl.includes(".m3u8"),
                         quality: "auto",
                     },
                 ],

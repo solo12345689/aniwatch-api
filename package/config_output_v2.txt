@@ -1,0 +1,25 @@
+﻿; "builtin" config from C:\Users\akshi\scoop\apps\nodejs\25.8.1\node_modules\npm\npmrc
+
+cache = "C:\\Users\\akshi\\scoop\\persist\\nodejs\\cache"
+prefix = "C:\\Users\\akshi\\scoop\\persist\\nodejs\\bin"
+
+; "user" config from C:\Users\akshi\.npmrc
+
+; //registry.npmjs.org/:_authToken = (protected) ; overridden by project
+
+; "project" config from D:\aniwatch-api\package\.npmrc
+
+//registry.npmjs.org/:_authToken = (protected)
+
+; node bin location = C:\Users\akshi\scoop\apps\nodejs\current\node.exe
+; node version = v25.8.1
+; npm local prefix = D:\aniwatch-api\package
+; npm version = 11.11.0
+; cwd = D:\aniwatch-api\package
+; HOME = C:\Users\akshi
+; Run `npm config ls -l` to show all defaults.
+
+; "publishConfig" from D:\aniwatch-api\package\package.json
+; This set of config values will be used at publish-time.
+
+access = "public"

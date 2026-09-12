@@ -80,7 +80,7 @@ console.log(sources.sources[0].url); // .m3u8 HLS stream URL
 
 ### ANIME.HiAnime
 
-Scrapes **[hianimez.to](https://hianimez.to)** — one of the most complete anime streaming sites.
+Scrapes **[aniwatchtv.to](https://aniwatchtv.to)** — one of the most complete anime streaming sites.
 
 ```ts
 import { ANIME } from "@genga-movie/aniwatch";

@@ -55,8 +55,8 @@ app.get("/v", async (c) =>
 
 app.use(cacheConfigSetter(BASE_PATH.length));
 
-app.basePath(BASE_PATH).route("/hianime", hianimeRouter);
-app.basePath(BASE_PATH).get("/anicrush", (c) =>
+app.route(`${BASE_PATH}/hianime`, hianimeRouter);
+app.get(`${BASE_PATH}/anicrush`, (c) =>
     c.text("Anicrush could be implemented in future.")
 );
 

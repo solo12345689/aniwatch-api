@@ -14,7 +14,7 @@ hianimeRouter.get("/home", async (c) => {
     const cacheConfig = c.get("CACHE_CONFIG");
 
     const data = await cache.getOrSet<HiAnime.ScrapedHomePage>(
-        hianime.getHomePage,
+        async () => hianime.getHomePage(),
         cacheConfig.key,
         cacheConfig.duration
     );

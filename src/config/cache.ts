@@ -32,21 +32,42 @@ export class AniwatchAPICache {
         dataGetter: () => Promise<T>,
         key: string,
         expirySeconds: number = AniwatchAPICache.DEFAULT_CACHE_EXPIRY_SECONDS
-    ) {
-        const cachedData = this.enabled
-            ? (await this.client?.get?.(key)) || null
-            : null;
-        let data = JSON.parse(String(cachedData)) as T;
+    ): Promise<T> {
+        let cachedData: string | null = null;
+        if (this.enabled && this.client) {
+            try {
+                cachedData = (await this.client.get(key)) || null;
+            } catch (err) {
+                console.error(`AniwatchAPICache: Failed to get key "${key}" from Redis:`, err);
+            }
+        }
+
+        let data: T | null = null;
+        if (cachedData) {
+            try {
+                data = JSON.parse(cachedData) as T;
+            } catch (err) {
+                console.error(`AniwatchAPICache: Failed to parse cached data for key "${key}":`, err);
+            }
+        }
 
         if (!data) {
             data = await dataGetter();
-            await this.client?.set?.(
-                key,
-                JSON.stringify(data),
-                "EX",
-                expirySeconds
-            );
+
+            if (this.enabled && this.client) {
+                try {
+                    await this.client.set(
+                        key,
+                        JSON.stringify(data),
+                        "EX",
+                        expirySeconds
+                    );
+                } catch (err) {
+                    console.error(`AniwatchAPICache: Failed to set key "${key}" in Redis:`, err);
+                }
+            }
         }
+
         return data;
     }
 

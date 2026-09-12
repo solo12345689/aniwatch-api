@@ -14,7 +14,7 @@
 # <p align="center">Aniwatch API</p>
 
 <div align="center">
-    A free RESTful API serving anime information from <a href="https://hianimez.to" target="_blank">hianimez.to</a>
+    A free RESTful API serving anime information from <a href="https://aniwatchtv.to" target="_blank">aniwatchtv.to</a>
 
   <br/>
 
@@ -56,7 +56,7 @@
 > [!IMPORTANT]
 >
 > 1. There was previously a hosted version of this API for showcasing purposes only, and it was misused; since then, there have been no other hosted versions. It is recommended to deploy your own instance for personal use by customizing the API as you need it to be.
-> 2. This API is just an unofficial API for [hianimez.to](https://hianimez.to) and is in no other way officially related to the same.
+> 2. This API is just an unofficial API for [aniwatchtv.to](https://aniwatchtv.to) and is in no other way officially related to the same.
 > 3. The content that this API provides is not mine, nor is it hosted by me. These belong to their respective owners. This API just demonstrates how to build an API that scrapes websites and uses their content.
 
 ## Table of Contents

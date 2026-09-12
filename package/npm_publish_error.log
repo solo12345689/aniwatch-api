@@ -1,0 +1,50 @@
+﻿18 notice 2.0kB dist/types/providers/hianime/HiAnime.d.ts.map
+18 notice 65B dist/types/providers/hianime/index.d.ts
+18 notice 150B dist/types/providers/hianime/index.d.ts.map
+18 notice 71B dist/types/providers/index.d.ts
+18 notice 141B dist/types/providers/index.d.ts.map
+18 notice 947B dist/types/types/base.d.ts
+18 notice 1.2kB dist/types/types/base.d.ts.map
+18 notice 6.5kB dist/types/types/hianime.d.ts
+18 notice 7.0kB dist/types/types/hianime.d.ts.map
+18 notice 92B dist/types/types/index.d.ts
+18 notice 156B dist/types/types/index.d.ts.map
+18 notice 2.5kB package.json
+19 notice Tarball Details
+20 notice name: @genga-movie/aniwatch
+21 notice version: 1.0.1
+22 notice filename: genga-movie-aniwatch-1.0.1.tgz
+23 notice package size: 36.3 kB
+24 notice unpacked size: 220.0 kB
+25 notice shasum: 339208046304a24d5662233502b2baa07ed309af
+26 notice integrity: sha512-zeb6w21piTCN9[...]wLPA4ZaexovCg==
+27 notice total files: 69
+28 notice
+29 http fetch GET 200 https://registry.npmjs.org/@genga-movie%2faniwatch 2296ms (cache revalidated)
+30 notice Publishing to https://registry.npmjs.org/ with tag latest and public access
+31 http fetch PUT 404 https://registry.npmjs.org/@genga-movie%2faniwatch 408ms
+32 verbose stack HttpErrorGeneral: 404 Not Found - PUT https://registry.npmjs.org/@genga-movie%2faniwatch - Not found
+32 verbose stack     at C:\Users\akshi\scoop\apps\nodejs\25.8.1\node_modules\npm\node_modules\npm-registry-fetch\lib\check-response.js:103:15
+32 verbose stack     at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+32 verbose stack     at async publish (C:\Users\akshi\scoop\apps\nodejs\25.8.1\node_modules\npm\node_modules\libnpmpublish\lib\publish.js:53:15)
+32 verbose stack     at async otplease (C:\Users\akshi\scoop\apps\nodejs\25.8.1\node_modules\npm\lib\utils\auth.js:8:12)
+32 verbose stack     at async #publish (C:\Users\akshi\scoop\apps\nodejs\25.8.1\node_modules\npm\lib\commands\publish.js:188:7)
+32 verbose stack     at async Publish.exec (C:\Users\akshi\scoop\apps\nodejs\25.8.1\node_modules\npm\lib\commands\publish.js:47:5)
+32 verbose stack     at async Npm.exec (C:\Users\akshi\scoop\apps\nodejs\25.8.1\node_modules\npm\lib\npm.js:209:9)
+32 verbose stack     at async module.exports (C:\Users\akshi\scoop\apps\nodejs\25.8.1\node_modules\npm\lib\cli\entry.js:67:5)
+33 verbose statusCode 404
+34 verbose pkgid @genga-movie/aniwatch@1.0.1
+35 error code E404
+36 error 404 Not Found - PUT https://registry.npmjs.org/@genga-movie%2faniwatch - Not found
+37 error 404
+38 error 404  The requested resource '@genga-movie/aniwatch@1.0.1' could not be found or you do not have permission to access it.
+39 error 404
+40 error 404 Note that you can also install from a
+41 error 404 tarball, folder, http url, or git url.
+42 verbose cwd D:\aniwatch-api\package
+43 verbose os Windows_NT 10.0.26100
+44 verbose node v25.8.1
+45 verbose npm  v11.11.0
+46 verbose exit 1
+47 verbose code 1
+48 error A complete log of this run can be found in: C:\Users\akshi\scoop\persist\nodejs\cache\_logs\2026-03-14T14_42_26_259Z-debug-0.log
